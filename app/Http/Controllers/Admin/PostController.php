@@ -54,17 +54,13 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::where("slug", "=", $slug)->first();
-
-        if (!$post) {
-            abort("404");
-        }
+        $post = Post::findOrFail($id);
 
         $data = [
             "post" => $post
         ];
 
-        return view("guests.posts.show", $data);
+        return view("admin.posts.show", $data);
     }
 
     /**
@@ -75,7 +71,13 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $data = [
+            "post" => $post
+        ];
+
+        return view("admin.posts.edit", $data);
     }
 
     /**
@@ -87,7 +89,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate($this->getValidationRules());
+        
+        $form_data = $request->all();
+
+        $post = Post::find($id);
+        $post->update($form_data);
+        
+        return redirect()->route("admin.posts.show", ["post" => $post->id]);
     }
 
     /**
@@ -98,6 +107,17 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        
+        $post->delete();
+
+        return redirect()->route("admin.posts.index");
+    }
+
+    private function getValidationRules() {
+        return [
+            "title" => "required|min:5|max:50",
+            "content" => "required"
+        ];
     }
 }

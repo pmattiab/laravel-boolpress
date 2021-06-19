@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="container">
-        <h1>Pagina home pubblica</h1>
+
+        <div>
+            <h1>Bevenuti</h1>
+            <h2>Blog con le ultime notizie</h2>
+        </div>
+
+        <div>
+            <a class="btn btn-primary" href="{{route("blog")}}">Leggi le ultime news</a>
+        </div>
+        
     </div>
 @endsection

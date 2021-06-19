@@ -10,10 +10,16 @@
                 <div class="col-6">
                     <div class="card" style="width: 34rem; margin: 10px 0">
                         <div class="card-body">
-                          <h5 class="card-title">{{ucfirst($post->title)}}</h5>
-                          <a href="#" class="btn btn-primary">Vai al post</a>
-                          <a href="#" class="btn btn-success">Modifica</a>
-                          <a href="#" class="btn btn-danger">Elimina</a>
+                            <h4 class="card-title">{{ucfirst($post->title)}}</h4>
+                            <p class="card-text" style="color:#6c757d;">{{substr($post->content, 0, 120)}}...</p>
+                            <a href="{{route("admin.posts.show", ["post" => $post->id])}}" class="btn btn-primary">Vai al post</a>
+                            <a href="{{route("admin.posts.edit", ["post" => $post->id])}}" class="btn btn-success">Modifica</a>
+                            <form style="display: inline-block;" class="form-group" action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
+                                @csrf
+                                @method("DELETE")
+        
+                                <input class="btn btn-danger" type="submit" value="Elimina">
+                            </form>
                         </div>
                     </div>
                 </div>
