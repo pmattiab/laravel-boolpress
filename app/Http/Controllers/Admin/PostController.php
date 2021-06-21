@@ -48,11 +48,34 @@ class PostController extends Controller
 
         $form_data = $request->all();
 
+        // Creiamo lo slug
+        $post_slug = Str::slug($form_data["title"], "-");
+        $base_slug = $post_slug;
+
+        // Cerchiamo un post con lo stesso slug del posto che stiamo inserendo
+        $post_existing_slug = Post::where("slug", "=", $post_slug)->first();
+        $counter = 2;
+
+        // Finchè troverà uno slug uguale già esistente
+        while ($post_existing_slug) {
+
+            // aggiungiamo - e il numero del counter
+            $post_slug = $base_slug . "-" . $counter;
+
+            // incrementiamo il counter
+            $counter++;
+
+            // e cerchiamo di nuovo se esiste già
+            $post_existing_slug = Post::where("slug", "=", $post_slug)->first();
+        }
+
+        // se non entra (o non entra più) nel while
+        // salviamo lo slug nel form data
+        $form_data["slug"] = $post_slug;
+
+        // e creiamo l'istanza
         $post = new Post();
         $post->fill($form_data);
-
-        $post->slug = Str::slug($post->title, "-");
-
         $post->save();
 
         return redirect()->route("admin.posts.show", ["post" => $post->id]);

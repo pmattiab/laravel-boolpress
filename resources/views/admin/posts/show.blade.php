@@ -6,9 +6,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="card-title">{{ucfirst($post->title)}}</h1>
+                    <h2 class="card-title">{{ucfirst($post->title)}}</h2>
                     <div class="mt-3 mb-3">
-                        <span><b>Slug:</b></span>
+                        <button type="button" class="btn btn-secondary btn-sm mr-1" disabled>
+                            Slug
+                        </button>
                         <span>{{$post->slug}}</span>
                     </div>
                     <p class="card-text text-secondary">{{$post->content}}</p>
