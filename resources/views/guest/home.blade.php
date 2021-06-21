@@ -3,8 +3,11 @@
 @section('content')
     <div class="container">
 
-        <div>
+        <div class="title">
             <h1>Bevenuti</h1>
+        </div>
+
+        <div class="sub_title mt-3 mb-5">
             <h2>Blog con le ultime notizie</h2>
         </div>
 

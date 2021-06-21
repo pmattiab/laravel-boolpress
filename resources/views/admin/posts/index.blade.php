@@ -8,13 +8,17 @@
         <div class="row">
             @foreach ($posts as $post)
                 <div class="col-6">
-                    <div class="card" style="width: 34rem; margin: 10px 0">
+                    <div class="card mt-4">
                         <div class="card-body">
                             <h4 class="card-title">{{ucfirst($post->title)}}</h4>
-                            <p class="card-text" style="color:#6c757d;">{{substr($post->content, 0, 120)}}...</p>
-                            <a href="{{route("admin.posts.show", ["post" => $post->id])}}" class="btn btn-primary">Vai al post</a>
-                            <a href="{{route("admin.posts.edit", ["post" => $post->id])}}" class="btn btn-success">Modifica</a>
-                            <form style="display: inline-block;" class="form-group" action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
+                            <p class="card-text text-secondary">{{substr($post->content, 0, 120)}}...</p>
+                            <a href="{{route("admin.posts.show", ["post" => $post->id])}}" class="btn btn-primary">
+                                <i class="fas fa-sign-out-alt"></i> Vai al post
+                            </a>
+                            <a href="{{route("admin.posts.edit", ["post" => $post->id])}}" class="btn btn-success">
+                                <i class="fas fa-edit"></i> Modifica
+                            </a>
+                            <form class="form-group d-inline-block" action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
                                 @csrf
                                 @method("DELETE")
         

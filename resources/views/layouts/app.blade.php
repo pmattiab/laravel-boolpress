@@ -18,13 +18,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">Home</a>
-                <a class="navbar-brand" href="{{ route('blog') }}">Blog</a>
+                <a class="navbar-brand mr-4" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
+                <a class="navbar-brand mr-4" href="{{ route('blog') }}"><i class="far fa-newspaper"></i> Blog</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -51,18 +55,34 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.posts.index') }}">Gestisci post</a>
+                                <a class="btn btn-primary ml-2" href="{{route('admin.posts.create')}}">
+                                    <i class="fas fa-plus"></i> Aggiungi nuovo post
+                                </a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item">
+                                <a class="btn btn-success ml-2" href="{{route('admin.posts.index')}}">
+                                    <i class="fas fa-edit"></i> Gestisci post
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown ml-1">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+                                    <a class="dropdown-item" href="{{route('admin.posts.create')}}">
+                                        <i class="fas fa-plus"></i> Aggiungi nuovo post
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{route('admin.posts.index')}}">
+                                        <i class="fas fa-edit"></i> Gestisci post
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

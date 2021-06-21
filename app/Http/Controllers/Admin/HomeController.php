@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // funzioni utili:
+        // laravel helper, funzioni utili:
         //
         // per prendere i dati dell'utente loggato
         // $user = Auth::user();

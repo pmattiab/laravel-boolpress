@@ -7,7 +7,7 @@
         <h1>Modifica post: {{ucfirst($post->title)}}</h1>
 
         @if ($errors->any())
-            <div class="alert alert-primary" role="alert">
+            <div class="alert alert-danger" role="alert">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>! {{$error}}</li>
@@ -23,20 +23,25 @@
             @method("PUT")
         
             <div class="form-group">
-                <label for="title"><h4>Titolo</h4></label>
-                <input class="form-control" type="text" name="title" id="title" value="{{$post->title}}">
+                <label for="title">Titolo</label>
+                <input class="form-control" type="text" name="title" id="title" value="{{ucfirst($post->title)}}">
             </div>
-        
+
             <div class="form-group">
-                <label for="content"><h4>Contenuto</h4></label>
-                <textarea class="form-control" name="content" id="content">{{$post->content}}</textarea>
+                <label for="title">Slug</label>
+                <input class="form-control" type="text" name="slug" id="slug" value="{{$post->slug}}" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="content">Contenuto</label>
+                <textarea class="form-control" rows="10" name="content" id="content">{{$post->content}}</textarea>
             </div>
         
-            <input style="margin-bottom: 10px;" type="submit" class="btn btn-primary" value="SALVA">
+            <input type="submit" class="btn btn-primary" value="Salva">
         
         </form>
 
-        <form style="display: inline-block;" class="form-group" action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
+        <form class="form-group mt-2    " action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
             @csrf
             @method("DELETE")
 

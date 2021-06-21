@@ -7,9 +7,15 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">{{ucfirst($post->title)}}</h1>
-                    <p class="card-text" style="color:#6c757d;">{{$post->content}}</p>
-                    <a href="{{route("admin.posts.edit", ["post" => $post->id])}}" class="btn btn-success">Modifica</a>
-                    <form style="display: inline-block;" class="form-group" action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
+                    <div class="mt-3 mb-3">
+                        <span><b>Slug:</b></span>
+                        <span>{{$post->slug}}</span>
+                    </div>
+                    <p class="card-text text-secondary">{{$post->content}}</p>
+                    <a href="{{route("admin.posts.edit", ["post" => $post->id])}}" class="btn btn-success">
+                        <i class="fas fa-edit"></i> Modifica
+                    </a>
+                    <form class="form-group d-inline-block" action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
                         @csrf
                         @method("DELETE")
             

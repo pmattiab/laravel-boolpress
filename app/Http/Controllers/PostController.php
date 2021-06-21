@@ -9,13 +9,14 @@ class PostController extends Controller
 {
     public function index() {
 
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::orderBy('id', 'DESC')->get();
 
         $data = [
             "posts" => $posts
         ];
 
-        return view("guests.posts.index", $data);
+        return view("guest.posts.index", $data);
     }
 
     public function show($slug) {
@@ -30,6 +31,6 @@ class PostController extends Controller
             "post" => $post
         ];
 
-        return view("guests.posts.show", $data);
+        return view("guest.posts.show", $data);
     }
 }
