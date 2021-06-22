@@ -31,9 +31,9 @@
                 <textarea class="form-control" name="content" id="content" rows="10" placeholder="Inserisci contenuto">{{old("content")}}</textarea>
             </div>
 
-            {{-- <div class="form-group">
+            <div class="form-group">
                 <label for="category_id">Categoria</label>
-                <select name="category_id" id="category_id">
+                <select class="form-control" name="category_id" id="category_id">
                     <option value="">Nessuna</option>
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}" {{old("category_id") == $category->id ? "selected" : ""}}>
@@ -41,7 +41,7 @@
                         </option>
                     @endforeach
                 </select>
-            </div> --}}
+            </div>
 
             <button type="submit" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Aggiungi
