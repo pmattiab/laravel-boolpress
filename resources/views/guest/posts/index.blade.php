@@ -13,7 +13,7 @@
                           <h4 class="card-title">{{ucfirst($post->title)}}</h4>
                           <p class="card-text text-secondary">{{substr($post->content, 0, 150)}}...</p>
                           <a href="{{route("blog-page", ["slug" => $post->slug])}}" class="btn btn-primary">
-                            <i class="fas fa-sign-out-alt"></i> Leggi il post
+                            <i class="far fa-file-alt"></i> Leggi il post
                           </a>
                         </div>
                     </div>

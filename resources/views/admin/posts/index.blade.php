@@ -13,7 +13,7 @@
                             <h4 class="card-title">{{ucfirst($post->title)}}</h4>
                             <p class="card-text text-secondary">{{substr($post->content, 0, 120)}}...</p>
                             <a href="{{route("admin.posts.show", ["post" => $post->id])}}" class="btn btn-primary">
-                                <i class="fas fa-sign-out-alt"></i> Vai al post
+                                <i class="far fa-file-alt"></i> Vai al post
                             </a>
                             <a href="{{route("admin.posts.edit", ["post" => $post->id])}}" class="btn btn-success">
                                 <i class="fas fa-edit"></i> Modifica
@@ -21,8 +21,7 @@
                             <form class="form-group d-inline-block" action="{{route("admin.posts.destroy", ["post" => $post->id])}}" method="post">
                                 @csrf
                                 @method("DELETE")
-        
-                                <input class="btn btn-danger" type="submit" value="&#xf043; Elimina">
+                                <input class="btn btn-danger" type="submit" value="&cross; Elimina">
                             </form>
                         </div>
                     </div>
