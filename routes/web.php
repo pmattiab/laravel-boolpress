@@ -23,11 +23,8 @@ Auth::routes();
 // namespace -> indica la cartella dove prendere i file (Admin)
 // name -> serve per aggiungere il nome (admin.) per la route list
 // middleware -> metodo per vedere se si è autenticati
-Route::prefix('admin')
-    ->namespace('Admin')
-    ->name('admin.')
-    ->middleware('auth')
-    ->group(function () {
+Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->group(function () {
+    
         Route::get('/', 'HomeController@index')->name('home');
         Route::resource("posts", "PostController");
     });
@@ -39,7 +36,9 @@ Route::get('/', 'HomeController@index')->name('home');
 
 // 
 Route::get("/blog", "PostController@index")->name("blog");
-
-
-// 
 Route::get("/blog/{slug}", "PostController@show")->name("blog-page");
+
+
+//
+Route::get("/categories", "CategoryController@index")->name("categories");
+Route::get("/categories/{slug}", "CategoryController@show")->name("category-page");

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+// use App\Tag;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -37,9 +38,11 @@ class PostController extends Controller
     {
 
         $categories = Category::all();
+        // $tags = Tag::all();
 
         $data = [
-            "categories" => $categories
+            "categories" => $categories,
+            // "tags" => $tag
         ];
 
         return view("admin.posts.create", $data);
@@ -142,6 +145,38 @@ class PostController extends Controller
         $form_data = $request->all();
 
         $post = Post::find($id);
+
+        // Impostiamo lo slug di default
+        $form_data["slug"] = $post->slug;
+
+        // Se il titolo viene cambiato, anche lo slug cambierà
+        if($form_data["title"] != $post->title) {
+
+            // Creiamo lo slug
+            $new_slug = Str::slug($form_data["title"], '-');
+            $base_slug = $new_slug;
+
+            // Cerchiamo un post con lo stesso slug del posto che stiamo inserendo
+            $post_existing_slug = Post::where("slug", "=", $new_slug)->first();
+            $counter = 2;
+
+            // Finchè troverà uno slug uguale già esistente
+            while ($post_existing_slug) {
+
+                // aggiungiamo - e il numero del counter
+                $new_slug = $base_slug . "-" . $counter;
+
+                // incrementiamo il counter
+                $counter++;
+
+                // e cerchiamo di nuovo se esiste già
+                $post_existing_slug = Post::where("slug", "=", $new_slug)->first();
+            }
+
+            // Quando finalmente troviamo uno slug libero, popoliamo i data da salvare
+            $form_data["slug"] = $new_slug;
+        }
+
         $post->update($form_data);
         
         return redirect()->route("admin.posts.show", ["post" => $post->id]);

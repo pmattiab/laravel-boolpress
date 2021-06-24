@@ -17,9 +17,7 @@ class UpdateAddCategoryToPostTable extends Migration
 
             $table->unsignedBigInteger('category_id')->nullable()->after("slug");
 
-            $table->foreign('category_id')
-                ->references('id')
-                ->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories');
 
         });
     }

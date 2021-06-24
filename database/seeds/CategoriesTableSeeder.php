@@ -14,11 +14,11 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            "Antipasto",
-            "Primo",
-            "Secondo",
-            "Contorno",
-            "Dolce"
+            "Antipasti",
+            "Primi",
+            "Secondi",
+            "Contorni",
+            "Dolci"
         ];
 
         foreach($categories as $category) {

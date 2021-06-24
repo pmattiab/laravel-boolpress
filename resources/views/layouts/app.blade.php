@@ -25,10 +25,11 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand mr-4" href="{{ url('/') }}"><i class="fas fa-home"></i> Home</a>
-                <a class="navbar-brand mr-4" href="{{ route('blog') }}"><i class="far fa-newspaper"></i> Blog</a>
+                <a class="navbar-brand mr-4" href="{{url('/') }}"><i class="fas fa-home"></i> Home</a>
+                <a class="navbar-brand mr-4" href="{{route('blog')}}"><i class="far fa-newspaper"></i> Blog</a>
+                <a class="navbar-brand mr-4" href="{{route('categories')}}"><i class="fas fa-utensils"></i> Categorie</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -90,7 +91,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-5 mt-5">
             @yield('content')
         </main>
     </div>
