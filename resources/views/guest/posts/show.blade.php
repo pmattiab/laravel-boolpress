@@ -16,7 +16,12 @@
                 </div>
               @endif
 
-
+              @if ($post->tags)
+                <div class="mt-2 mb-3">
+                  <span class="badge badge-info text-white p-1 mr-1"><i class="fas fa-tag"></i> Tag</span>
+                  <a class="align-middle text-dark" href="{{route("category-page", ["slug" => $post_category->slug])}}">{{$post_category->name}}</a>
+                </div>
+              @endif
 
               <p class="card-text text-secondary">{{$post->content}}</p>
 
