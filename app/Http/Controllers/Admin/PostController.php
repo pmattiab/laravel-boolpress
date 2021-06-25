@@ -38,11 +38,11 @@ class PostController extends Controller
     {
 
         $categories = Category::all();
-        // $tags = Tag::all();
+        $tags = Tag::all();
 
         $data = [
             "categories" => $categories,
-            // "tags" => $tag
+            "tags" => $tags
         ];
 
         return view("admin.posts.create", $data);
@@ -90,6 +90,10 @@ class PostController extends Controller
         $post->fill($form_data);
         $post->save();
 
+        if (isset($form_data["tags"]) && is_array($form_data["tags"])) {
+            $post->tags()->sync($form_data["tags"]);
+        }
+
         return redirect()->route("admin.posts.show", ["post" => $post->id]);
     }
 
@@ -105,7 +109,8 @@ class PostController extends Controller
 
         $data = [
             "post" => $post,
-            "post_category" => $post->category
+            "post_category" => $post->category,
+            "post_tags" => $post->tags
         ];
 
         return view("admin.posts.show", $data);
@@ -201,7 +206,8 @@ class PostController extends Controller
         return [
             "title" => "required|max:50",
             "content" => "required|max:65000",
-            "category_id" => "nullable|exists:categories,id"
+            "category_id" => "nullable|exists:categories,id",
+            "tags" => "nullable|exists:tags,id"
         ];
     }
 }

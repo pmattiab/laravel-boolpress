@@ -43,6 +43,16 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="" class="d-block">Tag</label>
+                @foreach ($tags as $tag)
+                    <div class="custom-control custom-switch d-inline-block mr-4">
+                        <input class="custom-control-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}" {{in_array($tag->id, old("tags", [])) ? "checked" : ""}}>
+                        <label class="custom-control-label" for="tag-{{$tag->id}}">{{$tag->name}}</label>
+                    </div>
+                @endforeach
+            </div>
+
             <button type="submit" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Aggiungi
             </button>

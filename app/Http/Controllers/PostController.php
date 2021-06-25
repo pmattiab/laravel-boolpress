@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
+use App\Tag;
 
 class PostController extends Controller
 {
@@ -29,7 +31,8 @@ class PostController extends Controller
 
         $data = [
             "post" => $post,
-            "post_category" => $post->category
+            "post_category" => $post->category,
+            "post_tags" => $post->tags
         ];
 
         return view("guest.posts.show", $data);
