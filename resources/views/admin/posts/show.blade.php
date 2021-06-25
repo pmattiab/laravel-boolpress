@@ -24,7 +24,7 @@
                             <span class="badge badge-danger text-white p-1 mr-1"><i class="fas fa-tag"></i> Tag</span>
 
                             @foreach ($post_tags as $tag)
-                                <a class="align-middle text-dark" href="#">{{$tag->name}}</a>{{$loop->last ? "" : ","}}
+                                <a class="align-middle text-dark" href="{{route("tag-page", ["slug" => $tag->slug])}}">{{$tag->name}}</a>{{$loop->last ? "" : ","}}
                             @endforeach
 
                         </div>

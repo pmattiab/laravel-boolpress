@@ -47,6 +47,22 @@
                     @endforeach
                 </select>
             </div>
+
+            <div class="form-group">
+                <label for="" class="d-block">Tag</label>
+                @foreach ($tags as $tag)
+                    <div class="custom-control custom-switch d-inline-block mr-4">
+
+                        @if ($errors->any())
+                            <input class="custom-control-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}" {{in_array($tag->id, old("tags", [])) ? "checked" : ""}}>
+                        @else
+                            <input class="custom-control-input" name="tags[]" type="checkbox" value="{{$tag->id}}" id="tag-{{$tag->id}}" {{$post->tags->contains($tag->id) ? "checked" : ""}}>
+                        @endif
+                        
+                        <label class="custom-control-label" for="tag-{{$tag->id}}">{{$tag->name}}</label>
+                    </div>
+                @endforeach
+            </div>
         
             <input type="submit" class="btn btn-success" value="&checkmark; Salva">
         
