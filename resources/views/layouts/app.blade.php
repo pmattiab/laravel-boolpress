@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Scripts da importare in singola pagina -->
+    @yield('header-scripts')
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -94,6 +97,11 @@
         <main class="py-5 mt-5">
             @yield('content')
         </main>
+
     </div>
+
+    <!-- Scripts da importare in singola pagina -->
+    @yield('footer-scripts')
+
 </body>
 </html>

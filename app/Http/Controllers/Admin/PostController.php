@@ -94,7 +94,7 @@ class PostController extends Controller
             $post->tags()->sync($form_data["tags"]);
         }
 
-        return redirect()->route("admin.posts.show", ["post" => $post->id]);
+        return redirect()->route("admin.posts.show", ["post" => $post->id])->with("success", "Salvataggio avvenuto correttamente");
     }
 
     /**
@@ -192,7 +192,7 @@ class PostController extends Controller
             $post->tags()->sync();
         }
         
-        return redirect()->route("admin.posts.show", ["post" => $post->id]);
+        return redirect()->route("admin.posts.show", ["post" => $post->id])->with("success", "Salvataggio avvenuto correttamente");
     }
 
     /**
@@ -207,7 +207,7 @@ class PostController extends Controller
         $post->tags()->sync([]);
         $post->delete();
 
-        return redirect()->route("admin.posts.index");
+        return redirect()->route("admin.posts.index")->with("success", "Cancellazione avvenuta correttamente");
     }
 
     private function getValidationRules() {

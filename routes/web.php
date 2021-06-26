@@ -30,15 +30,23 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
     });
 
 
-//
+// 
 Route::get('/', 'HomeController@index')->name('home');
 
 
-// 
+// Route per la visualizzazione dei post, in lista e singola pagina
 Route::get("/blog", "PostController@index")->name("blog");
 Route::get("/blog/{slug}", "PostController@show")->name("blog-page");
 
 
-//
+// Route per la visualizzazione delle categorie e dei post relativi in lista
 Route::get("/categories", "CategoryController@index")->name("categories");
 Route::get("/categories/{slug}", "CategoryController@show")->name("category-page");
+
+
+// Route per la visualizzazione in lista dei post relativi ai tag
+Route::get("/tags/{slug}", "TagController@show")->name("tag-page");
+
+
+//
+Route::get("/vue-posts", "PostController@vuePosts")->name("vue-posts");

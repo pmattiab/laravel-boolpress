@@ -2,7 +2,10 @@
 
 @section('content')
 
+
     <div class="container">
+        @include("partials.success-error-messages")
+        
         <h1>Gestisci i tuoi post</h1>
 
         <div class="row">
