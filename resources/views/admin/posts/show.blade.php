@@ -32,6 +32,9 @@
                         </div>
                     @endif
                     <p class="card-text text-secondary">{{$post->content}}</p>
+                    <div class="text-secondary position-absolute" style="top: 20px; right: 20px; font-size: 13px;">
+                        <span>creato il: {{$post->created_at->format("d/m/Y")}}</span>
+                    </div>
                     <a href="{{route("admin.posts.edit", ["post" => $post->id])}}" class="btn btn-success">
                         <i class="fas fa-edit"></i> Modifica
                     </a>

@@ -24,6 +24,9 @@
               @endif
               <p class="card-text text-secondary">{{$post->content}}</p>
             </div>
+            <div class="text-secondary position-absolute" style="top: 20px; right: 20px; font-size: 13px;">
+              <span>creato il: {{$post->created_at->format("d/m/Y")}}</span>
+            </div>
         </div>
         <div class="mt-3">
           <a class="btn btn-secondary" href="{{route("blog")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna al blog</a>
