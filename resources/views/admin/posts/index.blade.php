@@ -6,6 +6,10 @@
     <div class="container">
         @include("partials.success-error-messages")
         
+        <div class="mb-4">
+            <a class="btn btn-secondary" href="{{route("admin.home")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna alla dashboard</a>
+        </div>
+
         <h1>Gestisci i tuoi post</h1>
 
         <div class="row">

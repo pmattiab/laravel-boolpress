@@ -4,6 +4,10 @@
     
     <div class="container">
 
+        <div class="mb-4">
+            <a class="btn btn-secondary" href="{{route("admin.home")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna alla dashboard</a>
+        </div>
+
         <h1>Crea un nuovo post</h1>
 
         @include("partials.validation-errors")

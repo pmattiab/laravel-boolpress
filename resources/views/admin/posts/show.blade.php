@@ -44,6 +44,11 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-3">
+            <a class="btn btn-secondary" href="{{route("admin.posts.index")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna alla lista dei post</a>
+        </div>
+
     </div>
 
 @endsection

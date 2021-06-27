@@ -22,6 +22,10 @@
             @endforeach
         </div>
 
+        <div class="mt-4">
+            <a class="btn btn-secondary" href="{{route("categories")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna alle categorie</a>
+        </div>
+
     </div>
 
 @endsection

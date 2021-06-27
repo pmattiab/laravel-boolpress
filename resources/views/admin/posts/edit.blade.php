@@ -66,6 +66,10 @@
 
             <input class="btn btn-danger" type="submit" value="&cross; Elimina post" style="transform: translateY(-45px)">
         </form>
+
+        <div>
+            <a class="btn btn-secondary" href="{{route("admin.posts.index")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna alla lista dei post</a>
+        </div>
         
     </div>
 

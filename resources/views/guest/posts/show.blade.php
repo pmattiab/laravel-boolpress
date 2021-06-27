@@ -25,5 +25,8 @@
               <p class="card-text text-secondary">{{$post->content}}</p>
             </div>
         </div>
+        <div class="mt-3">
+          <a class="btn btn-secondary" href="{{route("blog")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna al blog</a>
+        </div>
     </div>
 @endsection
