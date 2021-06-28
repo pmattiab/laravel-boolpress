@@ -195,6 +195,15 @@ class PostController extends Controller
             $form_data["slug"] = $new_slug;
         }
 
+        // cover-image
+        if (isset($form_data["cover-image"])) {
+            $img_path = Storage::put("posts-cover", $form_data["cover-image"]);
+
+            if ($img_path) {
+                $form_data["cover"] = $img_path;
+            }
+        }
+
         $post->update($form_data);
 
         if (isset($form_data["tags"]) && is_array($form_data["tags"])) {
