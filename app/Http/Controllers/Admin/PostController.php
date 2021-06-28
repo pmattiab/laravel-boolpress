@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Post;
 use App\Category;
 use App\Tag;
-use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -85,11 +86,21 @@ class PostController extends Controller
         // salviamo lo slug nel form data
         $form_data["slug"] = $post_slug;
 
+        // cover-image
+        if (isset($form_data["cover-image"])) {
+            $img_path = Storage::put("posts-cover", $form_data["cover-image"]);
+
+            if ($img_path) {
+                $form_data["cover"] = $img_path;
+            }
+        }
+
         // e creiamo l'istanza
         $post = new Post();
         $post->fill($form_data);
         $post->save();
 
+        // tags[]
         if (isset($form_data["tags"]) && is_array($form_data["tags"])) {
             $post->tags()->sync($form_data["tags"]);
         }
@@ -215,7 +226,8 @@ class PostController extends Controller
             "title" => "required|max:50",
             "content" => "required|max:65000",
             "category_id" => "nullable|exists:categories,id",
-            "tags" => "nullable|exists:tags,id"
+            "tags" => "nullable|exists:tags,id",
+            "cover-image" => "nullable|image"
         ];
     }
 }
