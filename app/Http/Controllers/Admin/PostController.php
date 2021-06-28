@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewPostAdminNotification;
 use App\Post;
 use App\Category;
 use App\Tag;
@@ -105,6 +107,10 @@ class PostController extends Controller
             $post->tags()->sync($form_data["tags"]);
         }
 
+        // email all'admin
+        Mail::to("mattia@mattia.it")->send(new NewPostAdminNotification($post));
+
+        // return dello show del posto appena creato con messaggio di successo
         return redirect()->route("admin.posts.show", ["post" => $post->id])->with("success", "Salvataggio avvenuto correttamente");
     }
 
