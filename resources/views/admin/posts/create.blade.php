@@ -64,7 +64,7 @@
             </div>
 
             {{-- tasto per creare --}}
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary mt-4">
                 <i class="fas fa-plus"></i> Aggiungi
             </button>
 

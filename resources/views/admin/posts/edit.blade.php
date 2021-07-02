@@ -4,6 +4,11 @@
 
     <div class="container">
 
+        {{-- tasto per tornare alla lista dei post --}}
+        <div class="mb-5">
+            <a class="btn btn-secondary" href="{{route("admin.posts.index")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna alla lista dei post</a>
+        </div>
+
         {{-- titolo modifica --}}
         <h1>Modifica post: {{ucfirst($post->title)}}</h1>
 
@@ -78,7 +83,7 @@
             </div>
         
             {{-- tasto per salvare --}}
-            <input type="submit" class="btn btn-success" value="&checkmark; Salva">
+            <input type="submit" class="btn btn-success mt-3" value="&checkmark; Salva">
         
         </form>
 
@@ -88,11 +93,6 @@
             @method("DELETE")
             <input class="btn btn-danger" type="submit" value="&cross; Elimina post" style="transform: translateY(-45px)">
         </form>
-
-        {{-- tasto per tornare alla lista dei post --}}
-        <div>
-            <a class="btn btn-secondary" href="{{route("admin.posts.index")}}"><i class="far fa-arrow-alt-circle-left mr-1"></i>Torna alla lista dei post</a>
-        </div>
         
     </div>
 

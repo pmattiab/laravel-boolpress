@@ -31,7 +31,10 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->middleware('auth')->
 
 
 // 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get("/", "HomeController@index")->name("home");
+Route::get("/contacts", "HomeController@contacts")->name("contacts");
+Route::post("/handle-new-contact", "HomeController@handleNewContact")->name("handle-new-contact");
+Route::get("/contacts-thankyou", "HomeController@contactsThankyou")->name("contacts-thankyou");
 
 
 // Route per la visualizzazione dei post, in lista e singola pagina

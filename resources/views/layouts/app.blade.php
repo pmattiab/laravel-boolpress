@@ -32,7 +32,8 @@
             <div class="container">
                 <a class="navbar-brand mr-4" href="{{url('/') }}"><i class="fas fa-home"></i> Home</a>
                 <a class="navbar-brand mr-4" href="{{route('blog')}}"><i class="far fa-newspaper"></i> Blog</a>
-                <a class="navbar-brand mr-4" href="{{route('categories')}}"><i class="fas fa-utensils"></i> Categorie</a>
+                <a class="navbar-brand mr-4" href="{{route('categories')}}"><i class="fas fa-list"></i> Categorie</a>
+                <a class="navbar-brand mr-4" href="{{route('contacts')}}"><i class="far fa-id-card"></i> Contattaci</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
